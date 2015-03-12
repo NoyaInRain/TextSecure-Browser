@@ -19,6 +19,7 @@
 
     Whisper.ConversationListView = Whisper.ListView.extend({
         tagName: 'div',
+        className: "conversations",
         itemView: Whisper.ConversationListItemView,
         events: {
             'click .contact': 'select',

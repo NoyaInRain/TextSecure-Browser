@@ -17,6 +17,8 @@
 ;(function() {
     'use strict';
 
+    window.Whisper = window.Whisper || {};
+
     /*
      * Provides a persistent collection of conversations for
      * the inbox view. Automatically updates when messages are received.
@@ -41,6 +43,7 @@
         });
     }
 
-    extension.on('message', fetch);
+    // TODO: solve differently...
+    //extension.on('message', fetch);
     fetch();
 })();

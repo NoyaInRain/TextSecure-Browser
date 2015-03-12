@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Whisper Web</title>
+        <link rel="stylesheet" href="stylesheets/whisperweb.css"/>
+    </head>
+
+    <body>
+        <header>
+            <h1>Whisper Web</h1>
+        </header>
+        <!--<p class="notification"></p>-->
+
+        <!-- templates -->
+        <template class="main-page-template">
+            <div class="main-page-conversations panel">
+                <div class="main-page-conversation-list"></div>
+                <button class="main-page-start-conversation">
+                    New Conversation
+                </button>
+            </div>
+        </template>
+
+        <template class="sign-in-page-template">
+            <h1>Sign in</h1>
+            <div class="sign-in-page-step-1">
+                <form class="sign-in-page-sign-in">
+                    <input name="number" placeholder="Phone number"/>
+                    <button>Sign in</button>
+                </form>
+            </div>
+
+            <div class="sign-in-page-step-2">
+                <p>A verification code has been sent to your phone.</p>
+                <p>Sign in can take a while, because we are doing serious crypto
+                here. If your browser asks to stop the script, let it continue
+                for a while, please</p>
+                <form class="sign-in-page-sign-in-2">
+                    <input name="verification"/>
+                    <button>Sign in</button>
+                </form>
+                <button>Go back</button>
+            </div>
+        </template>
+
+        <!-- scripts -->
+        <!-- dependencies of libtextsecure, add to README.md / bower -->
+        <script src="components/jquery/dist/jquery.js"></script>
+        <script src="components/libphonenumber-api/libphonenumber_api-compiled.js"></script>
+        <!-- TODO: move to libtextsecure -->
+        <script src="js/libphonenumber-util.js"></script>
+        <script src="js/libtextsecure.js"></script>
+
+        <!-- dependencies -->
+        <script src="components/underscore/underscore.js"></script>
+        <script src="components/backbone/backbone.js"></script>
+        <script src="components/indexeddb-backbonejs-adapter/backbone-indexeddb.js"></script>
+        <script src="components/backbone.typeahead/backbone.typeahead.js"></script>
+        <script src="components/mustache/mustache.js"></script>
+        <script src="components/momentjs/moment.js"></script>
+
+        <script src="js/database.js"></script>
+
+        <!-- backgroundfoo, please remove fast -->
+        <script src="js/models/conversations.js"></script>
+        <script src="js/models/messages.js"></script>
+        <script src="js/inbox_controller.js"></script>
+
+        <script src="js/whisperweb.js"></script>
+        <script src="js/views/whisper_view.js"></script>
+        <script src="js/views/list_view.js"></script>
+        <script src="js/views/conversation_list_view.js"></script>
+        <script src="js/views/conversation_list_item_view.js"></script>
+        <script src="js/views/new_conversation_view.js"></script>
+        <script src="js/views/toast_view.js"></script> <!-- other mechanic? -->
+        <script src="js/views/file_input_view.js"></script>
+        <script src="js/views/attachment_preview_view.js"></script>
+    </body>
+</html>

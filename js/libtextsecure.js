@@ -10413,7 +10413,8 @@ CryptoJS.lib.Cipher || (function (undefined) {
                         }
                 } else {
                     var xhr = Util.XHR();
-                    xhr.open('GET', path, callback ? true : false);
+                    //xhr.open('GET', path, callback ? true : false);
+                    xhr.open('GET', path, true);
                     // xhr.setRequestHeader('User-Agent', 'XMLHTTP/1.0');
                     xhr.setRequestHeader('Accept', 'text/plain');
                     if (typeof xhr.overrideMimeType === 'function') xhr.overrideMimeType('text/plain');
@@ -15301,21 +15302,37 @@ window.axolotl.protocol = function() {
 
 ;(function() {
     function loadProtoBufs(filename) {
-        return dcodeIO.ProtoBuf.loadProtoFile({root: 'protos', file: filename}).build('textsecure');
+        return new Promise(function(resolve, reject) {
+            dcodeIO.ProtoBuf.loadProtoFile(
+                {root: 'protos', file: filename},
+                function(error, builder) {
+                    if (error) {
+                        reject(error);
+                        return;
+                    }
+                    resolve(builder.build('textsecure'));
+                });
+        });
     };
 
-    var protocolMessages = loadProtoBufs('WhisperTextProtocol.proto');
-    var deviceMessages   = loadProtoBufs('DeviceMessages.proto');
+    Promise.all([
+        loadProtoBufs('WhisperTextProtocol.proto'),
+        loadProtoBufs('DeviceMessages.proto')
+    ]).then(function(messages) {
+        var protocolMessages = messages[0];
+        var deviceMessages = messages[1];
 
-    window.axolotl = window.axolotl || {};
-    window.axolotl.protobuf = {
-        WhisperMessage            : protocolMessages.WhisperMessage,
-        PreKeyWhisperMessage      : protocolMessages.PreKeyWhisperMessage,
-        DeviceInit                : deviceMessages.DeviceInit,
-        IdentityKey               : deviceMessages.IdentityKey,
-        DeviceControl             : deviceMessages.DeviceControl,
-        ProvisionMessage          : deviceMessages.ProvisionMessage,
-    };
+        window.axolotl = window.axolotl || {};
+        window.axolotl.protobuf = {
+            WhisperMessage            : protocolMessages.WhisperMessage,
+            PreKeyWhisperMessage      : protocolMessages.PreKeyWhisperMessage,
+            DeviceInit                : deviceMessages.DeviceInit,
+            IdentityKey               : deviceMessages.IdentityKey,
+            DeviceControl             : deviceMessages.DeviceControl,
+            ProvisionMessage          : deviceMessages.ProvisionMessage,
+        };
+    });
+
 })();
 
 /* vim: ts=4:sw=4
@@ -15855,27 +15872,42 @@ window.axolotl.sessions = {
 })();
 
 ;(function() {
-
     function loadProtoBufs(filename) {
-        return dcodeIO.ProtoBuf.loadProtoFile({root: 'protos', file: filename}).build('textsecure');
+        return new Promise(function(resolve, reject) {
+            dcodeIO.ProtoBuf.loadProtoFile(
+                {root: 'protos', file: filename},
+                function(error, builder) {
+                    if (error) {
+                        reject(error);
+                        return;
+                    }
+                    resolve(builder.build('textsecure'));
+                });
+        });
     };
 
-    var pushMessages     = loadProtoBufs('IncomingPushMessageSignal.proto');
-    var subProtocolMessages = loadProtoBufs('SubProtocol.proto');
-    var deviceMessages   = loadProtoBufs('DeviceMessages.proto');
+    Promise.all([
+        loadProtoBufs('IncomingPushMessageSignal.proto'),
+        loadProtoBufs('SubProtocol.proto'),
+        loadProtoBufs('DeviceMessages.proto')
+    ]).then(function(messages) {
+        var pushMessages = messages[0];
+        var subProtocolMessages = messages[1];
+        var deviceMessages = messages[2];
 
-    window.textsecure = window.textsecure || {};
-    window.textsecure.protobuf = {
-        IncomingPushMessageSignal : pushMessages.IncomingPushMessageSignal,
-        PushMessageContent        : pushMessages.PushMessageContent,
-        ProvisioningUuid          : deviceMessages.ProvisioningUuid,
-        ProvisionEnvelope         : deviceMessages.ProvisionEnvelope,
-        ProvisionMessage          : deviceMessages.ProvisionMessage,
-        DeviceControl             : deviceMessages.DeviceControl,
-        WebSocketResponseMessage  : subProtocolMessages.WebSocketResponseMessage,
-        WebSocketRequestMessage   : subProtocolMessages.WebSocketRequestMessage,
-        WebSocketMessage          : subProtocolMessages.WebSocketMessage
-    };
+        window.textsecure = window.textsecure || {};
+        window.textsecure.protobuf = {
+            IncomingPushMessageSignal : pushMessages.IncomingPushMessageSignal,
+            PushMessageContent        : pushMessages.PushMessageContent,
+            ProvisioningUuid          : deviceMessages.ProvisioningUuid,
+            ProvisionEnvelope         : deviceMessages.ProvisionEnvelope,
+            ProvisionMessage          : deviceMessages.ProvisionMessage,
+            DeviceControl             : deviceMessages.DeviceControl,
+            WebSocketResponseMessage  : subProtocolMessages.WebSocketResponseMessage,
+            WebSocketRequestMessage   : subProtocolMessages.WebSocketRequestMessage,
+            WebSocketMessage          : subProtocolMessages.WebSocketMessage
+        };
+    });
 })();
 
 /* vim: ts=4:sw=4:expandtab

@@ -57,9 +57,10 @@
 
     Whisper.NewConversationView = Whisper.View.extend({
         className: 'new-conversation',
-        template: $('#new-conversation').html(),
         initialize: function() {
+            this.template = $('#new-conversation').html();
             this.render();
+            console.log(this.el);
             this.$group_update = this.$el.find('.new-group-update-form');
             this.$buttons = this.$el.find('.buttons');
             this.$input = this.$el.find('input.new-message');

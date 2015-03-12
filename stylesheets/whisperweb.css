@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Italic.ttf");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Bold.ttf");
+    font-weight: bold;
+}
+
+/* general */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font: medium / 1.5 "Roboto";
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin: 1.5rem 0;
+    font-weight: normal;
+}
+
+/* page */
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    background: #fff;
+    flex-flow: column;
+}
+
+body > header {
+    flex: none;
+    padding: 0.5rem;
+    color: #fff;
+    background: #2a92e7;
+}
+
+body > header > h1 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+body > .page {
+    flex: auto;
+}
+
+/* MainPage */
+
+.main-page {
+    display: flex;
+}
+
+.main-page-conversations {
+    display: flex;
+    flex-flow: column;
+}
+
+button {
+    padding: 0.5rem;
+    font: inherit;
+    color: #fff;
+    border: none;
+    background: #2a92e7;
+}
+
+.main-page-conversations > .conversations {
+    flex: auto;
+}
+
+.main-page-start-conversation {
+    flex: none;
+}
+
+/*.main-page-conversations,
+.conversation {*/
+.panel {
+    flex: none;
+    width: 100%;
+    max-width: 40ch;
+    border-right: 1px solid #2a92e7;
+}
+
+/* foo */
+
+.sign-in-page-step-2 {
+    display: none;
+}
+
+/* woot? */
+script {
+    display: none;
+}

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html class='no-js' lang='en'>
     <head>
-        <meta charset='utf-8'>
-        <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href='/icon.png' rel='shortcut icon'>
-        <link href="/stylesheets/manifest.css" rel="stylesheet" type="text/css" />
+        <meta charset='utf-8'/>
+        <meta content='width=device-width, user-scalable=no, initial-scale=1.0,
+        minimum-scale=1.0, maximum-scale=1.0' name='viewport'/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>foo</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href='/icon.png' rel='shortcut icon'/>
+        <link href="/stylesheets/manifest.css" rel="stylesheet"
+                                               type="text/css"/>
     </head>
     <body class='signal'>
         <script type='text/x-tmpl-mustache' id='conversation'>
@@ -35,10 +37,11 @@
                 <form class='send'>
                     <div class='attachments'>
                         <div class='paperclip'></div>
-                        <input type='file' class='file-input'>
+                        <input type='file' class='file-input'/>
                     </div>
                     <input class="send-btn" type='submit' value='' />
-                    <input class='send-message' type='textarea' placeholder="Send a message">
+                    <input class='send-message' type='textarea'
+placeholder="Send a message"/>
                 </form>
             </div>
         </script>
@@ -48,7 +51,7 @@
         </script>
         <script type='text/x-tmpl-mustache' id='message'>
             <div class='sender'>{{ sender }}</div>
-            <img class='avatar' src='{{ contact_avatar }}'>
+            <img class='avatar' src='{{ contact_avatar }}'/>
             <div class="bubble">
                 <p class="content">{{ message }}</p>
                 <div class='attachments'></div>
@@ -60,12 +63,13 @@
         </script>
         <script type='text/x-tmpl-mustache' id='new-group-update-form'>
             <div>
-              <input type='text' name='name' class='name' placeholder='Group Name' value="{{ name }}">
+              <input type='text' name='name' class='name' placeholder='Group
+Name' value="{{ name }}"/>
             </div>
             <div class='group-avatar'>
-              <div><input type='file' name='avatar' class='file-input'></div>
+              <div><input type='file' name='avatar' class='file-input'/></div>
             </div>
-            <div>Add members: <input name='members' class='members'></div>
+            <div>Add members: <input name='members' class='members'/></div>
             <button class='send'>Update</button>
         </script>
         <script type="text/x-tmpl-mustache" id="phone-number">
@@ -95,8 +99,9 @@
                   <div class='contacts'>
                   {{ #contacts }}
                     <div>
-                      <img class='avatar' src='{{ avatar }}'>
-                      <span class='name'>{{ name }}</div>
+                      <img class='avatar' src='{{ avatar }}'/>
+                      <span class='name'>{{ name }}</span><!-- TODO bug fixed
+here-->
                       {{ #conflict }}
                         <button class='resolve'>Key Conflict</button>
                       {{ /conflict }}
