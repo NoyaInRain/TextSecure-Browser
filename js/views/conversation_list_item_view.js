@@ -21,11 +21,11 @@
     Whisper.ConversationListItemView = Whisper.View.extend({
         tagName: 'div',
         className: 'contact',
-        template: $('#contact').html(),
         events: {
             'click': 'select'
         },
         initialize: function() {
+            this.template = $('#contact').html();
             this.listenTo(this.model, 'change', this.render); // auto update
             this.listenTo(this.model, 'destroy', this.remove); // auto update
         },
@@ -51,7 +51,7 @@
             }
             else {
                 this.$el.find('.avatar').append(
-                    $('<img>').attr('src', '/images/default.png')
+                    $('<img>').attr('src', 'images/default.png')
                 );
             }
 

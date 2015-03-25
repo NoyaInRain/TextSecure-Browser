@@ -33,8 +33,8 @@
 
     var ContentMessageView = Whisper.View.extend({
         tagName: 'div',
-        template: $('#message').html(),
         initialize: function() {
+            this.template = $('#message').html();
             this.listenTo(this.model, 'change:body', this.render);
             this.listenTo(this.model, 'change:delivered', this.renderDelivered);
         },

@@ -21,11 +21,11 @@
         className: function() {
             return [ 'conversation', this.model.get('type') ].join(' ');
         },
-        template: $('#conversation').html(),
         render_attributes: function() {
             return { group: this.model.get('type') === 'group' };
         },
         initialize: function() {
+            this.template = $('#conversation').html();
             this.listenTo(this.model, 'destroy', this.stopListening);
 
             this.render();

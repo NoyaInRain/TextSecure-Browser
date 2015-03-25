@@ -6,11 +6,14 @@
         <link rel="stylesheet" href="stylesheets/whisperweb.css"/>
     </head>
 
-    <body>
+    <body class="index">
         <header>
             <h1>Whisper Web</h1>
         </header>
         <!--<p class="notification"></p>-->
+        <footer>
+            BETA
+        </footer>
 
         <!-- templates -->
         <template class="main-page-template">
@@ -60,21 +63,26 @@
         <script src="components/mustache/mustache.js"></script>
         <script src="components/momentjs/moment.js"></script>
 
+        <!-- backend -->
         <script src="js/database.js"></script>
-
-        <!-- backgroundfoo, please remove fast -->
         <script src="js/models/conversations.js"></script>
         <script src="js/models/messages.js"></script>
+        <!-- backgroundfoo, please remove fast -->
         <script src="js/inbox_controller.js"></script>
 
+        <!-- ui -->
         <script src="js/whisperweb.js"></script>
         <script src="js/views/whisper_view.js"></script>
         <script src="js/views/list_view.js"></script>
-        <script src="js/views/conversation_list_view.js"></script>
         <script src="js/views/conversation_list_item_view.js"></script>
+        <script src="js/views/conversation_list_view.js"></script>
         <script src="js/views/new_conversation_view.js"></script>
-        <script src="js/views/toast_view.js"></script> <!-- other mechanic? -->
+        <!-- other mechanic? -->
+        <script src="js/views/toast_view.js"></script>
         <script src="js/views/file_input_view.js"></script>
         <script src="js/views/attachment_preview_view.js"></script>
+        <script src="js/views/conversation_view.js"></script>
+        <script src="js/views/message_view.js"></script>
+        <script src="js/views/message_list_view.js"></script>
     </body>
 </html>

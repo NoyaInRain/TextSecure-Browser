@@ -35,8 +35,8 @@
         events: {
             'click .remove': 'removeModel'
         },
-        template: $('#contact_pill').html(),
         initialize: function() {
+            this.template = $('#contact_pill').html();
             var error = this.model.validate(this.model.attributes);
             if (error) {
                 this.$el.addClass('error');
